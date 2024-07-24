@@ -1,0 +1,25 @@
+ConfEdit is a simple web UI for editing .ini style configuration files,
+which are text files such that each line may be one of:
+
+  VARIABLE_NAME=value
+or
+  (blank)
+or
+  #comment
+or
+  #include "another-filename"
+
+Values may be strings, or references to other variables, or booleans, or
+numbers, or dates.
+
+VARIABLE_NAMES are either pre-defined in the dialect of the configuration
+file, or used for subsequent expansion, in $VARIABLE_NAME fashion inside
+the value of another variable.
+
+Projects such as RevSim (https://github.com/00shoham/revsim) use this
+style of configuration file to setup their behaviour.
+
+Configuration files are obviously editable in a text editor (Notepad,
+pico, nano, vim, emacs, whatever), but some people prefer a more "friendly"
+web UI, especially one that understands the syntax of the file, and so
+ConfEdit was born.

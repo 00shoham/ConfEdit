@@ -1,0 +1,243 @@
+The configuration file for confedit specifies the "language" of
+configuration files that it able to edit, along with some key
+material for login sessions/cookies and folder hierarchy.
+
+Following are the variables that you can specify in confedit's own
+.ini file:
+
+* SESSION_COOKIE_ENCRYPTION_KEY
+
+  The encryption key used to decrypt session cookies.  Note that these
+  cookies should be set using auth2cookie - URL below:
+
+  https://github.com/00shoham/auth2cookie
+
+* WORK_DIR
+
+  The folder where ConfEdit will find configuration files to edit.
+
+  e.g., WORK_DIR=/var/confedit
+
+* VALIDATE_COMMAND
+
+  A command that can be run (CLI) to validate that a given configuration
+  file is okay.  Note that command-line arguments are normally included
+  in this specification, which may include WORKDIR (the folder where the
+  configuration file is to be found) and INIFILE (the filename to test).
+
+  You can only have one validate command and one of the good/bad matches
+  below in the setup of ConfEdit.
+
+  e.g., VALIDATE_COMMAND=/usr/local/bin/rev-sim -d WORKDIR -c INIFILE -conftest
+
+* VALIDATE_OK
+
+  A string to look for in the putput of VALIDATE_COMMAND that indicates that
+  the configuration file is good.
+
+  A configuration file is definitely considered to be bad if this is not
+  matched (just a straightforward substring match - no regular expression).
+
+  e.g., VALIDATE_OK=Configuration OK
+
+* VALIDATE_ERROR_KEYWORD
+
+  A string to look for in the putput of VALIDATE_COMMAND that indicates that
+  the configuration file is *not* good.
+
+  e.g., VALIDATE_ERROR_KEYWORD=ERROR
+
+  If the validation program does not indicate that a file is good, then this
+  is used to look for an error message to return to the user to explain what
+  the problem is.
+
+* COMMAND
+
+  A command that can be run using the configuration file being edited as input.
+  The COMMAND keyword just gives the command a name - more parameters follow.
+
+  e.g., COMMAND=Simulate
+
+* COMMAND_PATH
+
+  The file path of the command to actually execute.
+
+  e.g., COMMAND_PATH=/usr/local/bin/rev-sim
+
+* FOLDER_ARG
+
+  An argument to pass to the command specifying where the configuration file
+  being edited is to be found.
+
+  e.g., FOLDER_ARG=-d
+
+* CONFIG_ARG
+
+  An argument to pass to the command specifying the name of the
+  configuration file being edited.
+
+  e.g., CONFIG_ARG=-c
+
+* COMMAND_OUTPUT
+
+  An argument to pass to the command specifying the filename name of
+  the an output file that it should generate, along with the argument
+  that causes that to be produced.
+
+  e.g., COMMAND_OUTPUT=output.txt:-o
+
+  You can specify this multiple times for multiple output files generated
+  by the same command.
+
+* COMMAND_WORKDIR
+
+  What the 'current working directory' should be set to before running
+  the command.
+
+  e.g., COMMAND_WORKDIR=/var/confedit/workdir
+
+* COMMAND_SUCCESS
+
+  A regular expression to look for, in the command's output, indicating
+  that the command ran successfully.
+
+  e.g., COMMAND_SUCCESS=Simulated.*days
+
+* VARIABLE
+
+  The bulk of the configuration file specifies variables that can be set in the
+  dialect of INI file being edited.  Each variable definition starts with this
+  keyword, indicating the variable name.
+
+  e.g., VARIABLE=FIRST_DAY
+
+* TYPE
+
+  The type of values that this variable can be set to.  Options are:
+
+  - int == integer
+  - date == time/date or just date
+  - string == a sequence of characters.  Note that some strings are references
+    to other variables, via the XREF keyword (see below).
+  - bool == true or false
+  - float == a floating point number (may have decimals)
+  - xref == the value of this variable connects two other variables to one another.
+  - dateval == two values separated by a space -- a date and a number.
+  - intlist == a sequence of integers, separated by commas.
+
+  e.g., TYPE=date
+
+* SINGLETON
+
+  Indicates that this variable can only be set once in the entire configuration file.
+
+  e.g., SINGLETON=true
+
+* HELP
+
+  Help text describing what this variable is used for.
+
+  e.g., HELP=First date the simulation runs, in CCYY-MM-DD format (e.g., 2024-06-01)
+
+* MANDATORY
+
+  Indicates that a valid configuration file *must* specify a value for this variable.
+
+  e.g., MANDATORY=true
+
+
+* MIN
+
+  For integer, integer list, dateval and float type variables, the smallest
+  value permissible.
+
+  e.g., MIN=10
+
+* MAX
+
+  For integer, integer list, dateval and float type variables, the largest
+  value permissible.
+
+  e.g., MAX=5000
+
+* DEFAULT
+
+  The default value for this variable, if it is added to the configuration file,
+  until one is specified by the user.
+
+  e.g., DEFAULT=365
+
+* STEP
+
+  For integer or floating point type variables, the increment in which it is increased
+  or decreased via the up/down controls in the user interface.
+
+  e.g., STEP=0.1
+
+* FOLLOWS
+
+  Sometimes one variable should follow another in a logical sequence.  This
+  indicates what prior variable a given variable should follow.
+
+  e.g., FOLLOWS=COLLECTIONS_DELAY_CALENDAR_DAYS_AVG
+
+* PARENT
+
+  Sometimes a variable is logically subordinate to another variable.  This
+  indicates the variable name which is a parent to the current variable.
+
+  e.g., PARENT=VACATION
+
+* XREF
+
+  For variables of type string, what variable type is this one referring to?
+
+  Note that for variables of type xref, the value itself is two variable values
+  separated by a space.
+
+  e.g., XREF=STAGE
+
+  Note that for variables of type xref -- not of type string -- the value is something
+  like this:
+
+  e.g., LINK_STAGE_CLASS=cold-call sales
+
+* REFLEFT
+
+  For variables of type xref, the variable type that the left hand value refers to.
+
+  e.g., REFLEFT=STAGE
+
+* REFRIGHT
+
+  For variables of type xref, the variable type that the right hand value refers to.
+
+  e.g., REFRIGHT=REP_CLASS
+
+* ISLIST
+
+  Indicates that the variable takes a list of values, not just a single value.
+
+  e.g., ISLIST=true
+
+* MINVALUES
+
+  Indicates that smallest permissible number of values in the list.
+
+  e.g., ISLIST=true
+
+* USER
+
+  The login ID of a valid user.  Note that auth2cookie will authenticate
+  anyone against an IdP such as Google or Yahoo, but the ID they get
+  may not be authorized for anything here.
+
+  e.g., USER=joele
+
+* FOLDER
+
+  For a given user, the folder in which to find configuration files that the
+  user is permitted to edit.
+
+  e.g., FOLDER=/var/confedit/tressl
+

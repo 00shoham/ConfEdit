@@ -1,0 +1,9 @@
+This package links against 'idanlib' which is available from https://github.com/00shoham/idanlib.
+Check that package for its own dependencies - principally developer libraries for lua and curl.
+
+The package was developed on Ubuntu, but should be readily portable to any POSIX-based system, and
+certainly to any other Linux distribution with minimal trouble.
+
+The web services used internally by ConfEdit were tested under Apache2, but any standards-compliant
+web server should be usable.
+

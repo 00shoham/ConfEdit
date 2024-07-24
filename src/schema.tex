@@ -1,0 +1,718 @@
+% MyPath auto-populated:
+\def\MyPath{/home/idan/confedit/src/schema.tex}
+\def\MyTitle{Configuration file syntax}
+\def\MyDate{2024-04-20}
+
+\input{mti-header}
+\input{mti-title}
+
+
+
+\section{VACATION}
+
+
+Unique identifier for a class of vacation (define here, use later in conjunction with sales rep classes).
+
+Set this variable to a value of type 'string.'
+
+You must include at least one instance of this variable in any valid configuration file.
+
+This variable is typically followed by the following "subsidiary" variables:
+
+
+\textbf{VACATION\_DAYS:}
+
+
+Number of work days that someone who gets this class of vacation can take off.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 5.
+
+The largest permissible value is 50.
+
+If you don't set this variable, its default value will be 15.
+
+
+\textbf{VACATION\_NAME:}
+
+
+More verbose name for the vacation class.
+
+Set this variable to a value of type 'string.'
+
+
+\section{STAGE}
+
+
+Unique ID of a stage in the sales process.
+
+Set this variable to a value of type 'string.'
+
+You must include at least one instance of this variable in any valid configuration file.
+
+This variable is typically followed by the following "subsidiary" variables:
+
+
+\textbf{STAGE\_ATTRITION\_PERCENT:}
+
+
+The attrition rate (percentage) of prospects at this sales stage.  100\% - this rate == the number of prospects that pass this stage and continue to the next stage in the sales process.
+
+Set this variable to a value of type 'float.'
+
+The smallest permissible value is 0.1.
+
+The largest permissible value is 99.9.
+
+
+\textbf{STAGE\_CONNECT\_RETRY\_DAYS\_SDEV:}
+
+
+Standard deviation relating to STAGE\_CONNECT\_RETRY\_DAYS\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_CONNECT\_RETRY\_DAYS\_AVG:}
+
+
+When trying to connect to a prospect, how many days between connection attempts (phone calls, e-mails), on average?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_CONNECT\_ATTEMPTS\_SDEV:}
+
+
+Standard deviation relating to STAGE\_CONNECT\_ATTEMPTS\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_CONNECT\_ATTEMPTS\_AVG:}
+
+
+Average number of attempts that a sales person will need before actually connecting to a human in the prospective customer organization.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_DAYS\_SDEV:}
+
+
+Standard deviation relating to STAGE\_DAYS\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_DAYS\_AVG:}
+
+
+Average number of work days that this stage in the sales process takes to complete.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99.
+
+
+\textbf{STAGE\_FOLLOWS:}
+
+
+What earlier stage in the sales process must be completed before this stage commences?
+
+Set this variable to a value of type 'string.'
+
+Set the value to the ID of a STAGE variable.
+
+
+\textbf{STAGE\_NAME:}
+
+
+More verbose name for the sales process stage.
+
+Set this variable to a value of type 'string.'
+
+
+\section{PRODUCT}
+
+
+The unique identifier of a product or service that can be sold.
+
+Set this variable to a value of type 'string.'
+
+You must include at least one instance of this variable in any valid configuration file.
+
+This variable is typically followed by the following "subsidiary" variables:
+
+
+\textbf{PRODUCT\_FIRST\_SALE\_STAGE:}
+
+
+The first stage in the sales process for this product.
+
+Set this variable to a value of type 'string.'
+
+Set the value to the ID of a STAGE variable.
+
+
+\textbf{PRODUCT\_ATTRITION\_PERCENT\_PER\_MONTH:}
+
+
+What percentage of customers who have previously purchased this product will cancel their subscription in any given month?
+
+Set this variable to a value of type 'float.'
+
+The smallest permissible value is 0.0.
+
+The largest permissible value is 100.0.
+
+
+\textbf{PRODUCT\_MONTHS\_TIL\_STEADY\_STATE\_SDEV:}
+
+
+Standard deviation associated with PRODUCT\_MONTHS\_TIL\_STEADY\_STATE\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 100.
+
+
+\textbf{PRODUCT\_MONTHS\_TIL\_STEADY\_STATE\_AVG:}
+
+
+The average number of months between closing a new sale of this product and reaching steady state revenue with a given customer.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 100.
+
+
+\textbf{PRODUCT\_M\_GROWTH\_RATE\_PERCENT:}
+
+
+The average monthly increase, expressed as a percentage of the previous month's revenue, in monthly recurring revenue (MRR) in this product, as it approaches steady state for a given customer.
+
+Set this variable to a value of type 'float.'
+
+The smallest permissible value is 0.0.
+
+The largest permissible value is 500.0.
+
+
+\textbf{PRODUCT\_M\_REVENUE\_SDEV:}
+
+
+The standard deviation associated with PRODUCT\_M\_REVENUE\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 100.
+
+
+\textbf{PRODUCT\_M\_REVENUE\_AVG:}
+
+
+The average monthly recurring revenue from sales of this product.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 100.
+
+
+\textbf{PRODUCT\_NAME:}
+
+
+A more verbose and user friendly name for this product.
+
+Set this variable to a value of type 'string.'
+
+
+\section{REP\_CLASS}
+
+
+A unique identifier for a class of sales rep.
+
+Set this variable to a value of type 'string.'
+
+You must include at least one instance of this variable in any valid configuration file.
+
+This variable is typically followed by the following "subsidiary" variables:
+
+
+\textbf{REP\_CLASS\_SALARY\_ONLY:}
+
+
+We can model the cost of the overall organizational workforce by creating classes of 'sales rep' who are not really involved in sales.  Set this to 'true' if this class is really just a model for salary expense and does not represent actual sales people.
+
+Set this variable to a value of type 'bool.'
+
+
+\textbf{REP\_CLASS\_AUTO\_REPLACE:}
+
+
+When people quit or are terminated, should the simulation replace them automatically?
+
+Set this variable to a value of type 'bool.'
+
+
+\textbf{REP\_CLASS\_ANNUAL\_INCREASE\_PERCENT:}
+
+
+People get annual increases to their salary.  What should the annual percentage in pay be for people in this class?
+
+Set this variable to a value of type 'float.'
+
+The smallest permissible value is 0.0.
+
+The largest permissible value is 99.9.
+
+
+\textbf{REP\_CLASS\_SDEV\_MONTHS\_EMPLOYMENT:}
+
+
+This is the standard deviation related to REP\_CLASS\_AVG\_MONTHS\_EMPLOYMENT.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 999.
+
+
+\textbf{REP\_CLASS\_AVG\_MONTHS\_EMPLOYMENT:}
+
+
+People quit or get fired.  We model that with an average number of months of employment, per class of sales rep, set here.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 999.
+
+
+\textbf{REP\_CLASS\_VACATION:}
+
+
+Which type of vacation schedule do reps in this class get?
+
+Set this variable to a value of type 'string.'
+
+Set the value to the ID of a VACATION variable.
+
+
+\textbf{REP\_CLASS\_INITIATE\_CALLS:}
+
+
+Can this sales rep initiate calls to new prospects?  Cold callers generally set this to 'true' - while others may only handle calls that have already been qualified at an early stage and set this to 'false.'
+
+Set this variable to a value of type 'bool.'
+
+If you don't set this variable, its default value will be true
+
+
+\textbf{REP\_CLASS\_PRODUCT:}
+
+
+Which product can this sales rep class sell?  Use this variable multiple times under a SALES\_REP to indicate that they can sell more than one product or service.
+
+Set this variable to a value of type 'string.'
+
+Set the value to the ID of a PRODUCT variable.
+
+
+\textbf{REP\_CLASS\_PRODUCTIVITY:}
+
+
+Percent of ultimate productivity (measured as daily call volume) that a person in this class can reach, during each of the first few months.  e.g., 25,50,75,100 means 25\% of end-state call volume in the first month of employment, 50\% in the second month, 75\% in the third month and reaching full productivity on month 4.
+
+Set this variable to a value of type 'intlist.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 100.
+
+
+\textbf{REP\_CLASS\_NAME:}
+
+
+The more verbose and user friendly name for this class of sales rep.
+
+Set this variable to a value of type 'string.'
+
+
+\section{SALES\_REP}
+
+
+Introduce an individual, named sales rep (or non-sales employee if the class will have REP\_CLASS\_SALARY\_ONLY set to true) using this variable.  The value is the unique ID of this person.
+
+Set this variable to a value of type 'string.'
+
+You must include at least one instance of this variable in any valid configuration file.
+
+This variable is typically followed by the following "subsidiary" variables:
+
+
+\textbf{SALES\_REP\_DAILY\_CALLS:}
+
+
+How many calls per day is this person making or expected to make?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 200.
+
+
+\textbf{SALES\_REP\_HANDOFF\_FEE:}
+
+
+This is mostly used for cold-callers.  If they qualify a lead, and hand it off to a higher-level rep, what fixed amount do they get paid?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 1000.
+
+
+\textbf{SALES\_REP\_ANNUAL\_SALARY:}
+
+
+What will you pay this person, per year?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 1000000.
+
+
+\textbf{SALES\_REP\_FINISH:}
+
+
+Set the last date of employment for this person, if known.  You can set it to the keyword 'end-of-sim' to indicate 'when simulation ends.'  Otherwise, use a CCYY-MM-DD format dates.
+
+Set this variable to a value of type 'string.'
+
+
+\textbf{SALES\_REP\_START:}
+
+
+Set the starting date for this person, if known.  You can set it to the keyword 'start' to indicate 'at the start of the simulation.'  Otherwise, use a CCYY-MM-DD format dates.
+
+Set this variable to a value of type 'string.'
+
+
+\textbf{SALES\_REP\_CLASS:}
+
+
+Link this sales rep to a sales rep class - what type is s/he?
+
+Set this variable to a value of type 'string.'
+
+Set the value to the ID of a REP\_CLASS variable.
+
+
+\textbf{SALES\_REP\_NAME:}
+
+
+Give the sales rep a name.
+
+Set this variable to a value of type 'string.'
+
+
+\section{Singleton variables}
+
+
+These variables appear at most once in the configuration.
+
+
+\textbf{FIRST\_DAY:}
+
+
+First date the simulation runs, in CCYY-MM-DD format (e.g., 2024-06-01)
+
+Set this variable to a value of type 'date.'
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+
+\textbf{DURATION:}
+
+
+Number of days the simulation will run.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 10.
+
+The largest permissible value is 5000.
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+If you don't set this variable, its default value will be 365.
+
+
+\textbf{PAYMENT\_PROCESSING\_PERCENT:}
+
+
+If revenue comes via a payment processor (e.g., customers pay with credit cards), then set this to the percent fee the processor takes from each payment.  e.g., 3 = 3\%.
+
+Set this variable to a value of type 'float.'
+
+The smallest permissible value is 0.1.
+
+The largest permissible value is 9.9.
+
+This variable can only appear once in the configuration file.
+
+If you don't set this variable, its default value will be 3
+
+
+\textbf{COLLECTIONS\_DELAY\_CALENDAR\_DAYS\_AVG:}
+
+
+If revenue is via invoices sent out and cheques or e-transfers back, then the average number of calendar days after a revenue 'event' happened (a sale) and before payment is actually received.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 999.
+
+This variable can only appear once in the configuration file.
+
+If you don't set this variable, its default value will be 60.
+
+
+\textbf{COLLECTIONS\_DELAY\_CALENDAR\_DAYS\_SDEV:}
+
+
+Standard deviation related to COLLECTIONS\_DELAY\_CALENDAR\_DAYS\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 100.
+
+This variable can only appear once in the configuration file.
+
+If you don't set this variable, its default value will be 15.
+
+
+\textbf{MARKET\_SIZE:}
+
+
+How many potential customers are there in the marketplace?  (Need this to model sales saturation).
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 999999.
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+If you don't set this variable, its default value will be 10000.
+
+
+\textbf{ORG\_COOLING\_PERIOD\_DAYS:}
+
+
+How many days, after trying to call and being rejected, can we try to call the same prospective customer again?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 9999.
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+If you don't set this variable, its default value will be 180.
+
+
+\textbf{DAYS\_TO\_REPLACE\_REP\_AVG:}
+
+
+If a sales rep quits, how many days, on average, will it take to find a replacement?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 999.
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+If you don't set this variable, its default value will be 60.
+
+
+\textbf{DAYS\_TO\_REPLACE\_REP\_SDEV:}
+
+
+Standard deviation relating to DAYS\_TO\_REPLACE\_REP\_AVG.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 999.
+
+This variable can only appear once in the configuration file.
+
+You must include  this variable in any valid configuration file.
+
+If you don't set this variable, its default value will be 14.
+
+
+\textbf{INITIAL\_CASH\_BALANCE:}
+
+
+Do we start the simulation with cash in the bank?  How much, if so?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 99999999.
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{TAX\_RATE\_PERCENT:}
+
+
+If we earn money during a calendar year, how much of it is payable in corporate income taxes? (percent)
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 0.
+
+The largest permissible value is 75.
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{INVESTMENT:}
+
+
+Indicate that some amount of capital will be invested in the company on a given date.  Impacts the analysis of cash in the bank.
+
+Set this variable to a value of type 'dateval.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 99999999.
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{GRANT:}
+
+
+Indicate that some non-dilutive funding (government grant or similar) will be deposited on a given date.  Impacts the analysis of cash in the bank.
+
+Set this variable to a value of type 'dateval.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 9999999.
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{ONE\_TIME\_EXPENSE:}
+
+
+Indicate that a one-time expense happens on a given date.  Used to model cash in the bank.
+
+Set this variable to a value of type 'dateval.'
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{ONE\_TIME\_INCOME:}
+
+
+Indicate that a one-time income event happens on a given date.  Used to model cash in the bank.
+
+Set this variable to a value of type 'dateval.'
+
+This variable can only appear once in the configuration file.
+
+
+\textbf{TAX\_REFUND:}
+
+
+Indicate that a one-time tax refund happens on a given date.  Used to model cash in the bank.
+
+Set this variable to a value of type 'dateval.'
+
+This variable can only appear once in the configuration file.
+
+
+\section{Everything else}
+
+
+These variables can appear more than once, but have no 'child' variables.
+
+
+\textbf{LINK\_STAGE\_CLASS:}
+
+
+Which stage in the sales process are people in this sales rep class able to complete?  For example, some people might just do cold calling, others might just do demos, etc.
+
+Set this variable to a value of type 'xref.'
+
+Set this to the IDs of two other variables, separated by a space:  The left one is of type STAGE and the right one is of type REP\_CLASS.
+
+You must include at least one instance of this variable in any valid configuration file.
+
+\LastPage{}
+\end{document}
+
