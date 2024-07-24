@@ -1,0 +1,29 @@
+* Get and build idanlib (https://github.com/00shoham/idanlib).
+
+* Get, build and install/configure auth2cookie (https://github.com/00shoham/auth2cookie).
+
+* Make a working directory, such as:
+
+  mkdir /var/confedit
+
+* Make that working directory editable by the user in whose security context
+  the web server (e.g., Apache2) runs:
+
+  chown -R www-data /var/confedit
+  chmod -R 755 `find /var/confedit -type d`
+
+* Make a configuration file that tells confedit about the dialect of
+  configuration files it should be editing.  Put that in
+  /usr/local/etc/confedit.ini.
+
+  This config file must share an encryption key
+  (/usr/local/etc/key.ini) with auth2cookie.
+
+* Install the confedit CGI program and UI:
+
+  cd confedit/src
+  ./install-web.sh
+
+* Visit the UI at https://(your-hostname)/confedit/ui.html
+
+  
