@@ -10,7 +10,7 @@ void ProcessPage()
 
 int main( int argc, char** argv )
   {
-  logFileHandle = fopen( "/var/confedit/confedit-api.log", "a" );
+  logFileHandle = fopen( "/data/confedit/confedit-api.log", "a" );
 
   char* confPath = MakeFullPath( CONFIGDIR, CONFIGFILE );
   _CONFIG* conf = (_CONFIG*)calloc( 1, sizeof( _CONFIG ) );

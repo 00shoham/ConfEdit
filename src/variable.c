@@ -82,10 +82,10 @@ _VARIABLE* AppendVariable( _CONFIG* conf, char* id )
   newV->id = strdup( id );
   UpperCase( newV->id, strlen( newV->id ), newV->id );
 
-  newV->minInt = INT_MAX;
-  newV->maxInt = INT_MIN;
-  newV->minFloat = DBL_MAX;
-  newV->maxFloat = DBL_MIN;
+  newV->minInt = INT_MIN;
+  newV->maxInt = INT_MAX;
+  newV->minFloat = DBL_MIN;
+  newV->maxFloat = DBL_MAX;
 
   _VARIABLE** vPtr = &( conf->variables );
   for( ; vPtr!=NULL && (*vPtr)!=NULL; )

@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}VACATION}{1}{section.1}%
-\contentsline {section}{\numberline {2}STAGE}{1}{section.2}%
-\contentsline {section}{\numberline {3}PRODUCT}{3}{section.3}%
-\contentsline {section}{\numberline {4}REP\_CLASS}{5}{section.4}%
-\contentsline {section}{\numberline {5}SALES\_REP}{7}{section.5}%
-\contentsline {section}{\numberline {6}Singleton variables}{8}{section.6}%
-\contentsline {section}{\numberline {7}Everything else}{12}{section.7}%
+\contentsline {section}{\numberline {2}STAGE}{2}{section.2}%
+\contentsline {section}{\numberline {3}PRODUCT}{4}{section.3}%
+\contentsline {section}{\numberline {4}REP\_CLASS}{7}{section.4}%
+\contentsline {section}{\numberline {5}SALES\_REP}{11}{section.5}%
+\contentsline {section}{\numberline {6}Singleton variables}{13}{section.6}%
+\contentsline {section}{\numberline {7}Everything else}{19}{section.7}%

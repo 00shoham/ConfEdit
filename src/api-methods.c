@@ -168,13 +168,13 @@ void VarTypeDescribe( _CONFIG* conf, char* userID, char* methodName, _TAG_VALUE*
   if( var->parent != NULL )
     definition = NewTagValue( "PARENT", var->parent->id, definition, 0 );
   definition = NewTagValue( "HAS-CHILDREN", var->children==NULL ? "false" : "true", definition, 0 );
-  if( ( var->type==vt_int || var->type==vt_intlist ) && var->minInt != INT_MAX )
+  if( ( var->type==vt_int || var->type==vt_intlist ) && var->minInt != INT_MIN )
     definition = NewTagValueInt( "MINIMUM", var->minInt, definition, 0 );
-  if( ( var->type==vt_int || var->type==vt_intlist ) && var->maxInt != INT_MIN )
+  if( ( var->type==vt_int || var->type==vt_intlist ) && var->maxInt != INT_MAX )
     definition = NewTagValueInt( "MAXIMUM", var->maxInt, definition, 0 );
-  if( var->type==vt_float && var->minFloat != INT_MAX )
+  if( var->type==vt_float && var->minFloat != DBL_MIN )
     definition = NewTagValueDouble( "MINIMUM", var->minFloat, definition, 0 );
-  if( var->type==vt_float && var->maxFloat != INT_MIN )
+  if( var->type==vt_float && var->maxFloat != DBL_MAX )
     definition = NewTagValueDouble( "MAXIMUM", var->maxFloat, definition, 0 );
   if( var->type==vt_float && var->step > 0 )
     definition = NewTagValueDouble( "STEP", var->step, definition, 0 );
