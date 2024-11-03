@@ -138,6 +138,9 @@ void PrintVariable( FILE* f, _VARIABLE* var )
   if( NOTEMPTY( var->childrenValidateExpression ) )
     fprintf( f, "VALIDATE=%s\n", var->childrenValidateExpression );
 
+  if( NOTEMPTY( var->legalValues ) )
+    fprintf( f, "LEGAL=%s\n", var->legalValues );
+
   if( var->gotDefault )
     {
     switch( var->type )
@@ -213,6 +216,7 @@ void FreeVariable( _VARIABLE* v )
 
   FREEIFNOTNULL( v->childrenValidateExpression );
   FREEIFNOTNULL( v->defaultString );
+  FREEIFNOTNULL( v->legalValues );
   FREEIFNOTNULL( v->helpText );
 
   free( v );

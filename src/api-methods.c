@@ -188,6 +188,8 @@ void VarTypeDescribe( _CONFIG* conf, char* userID, char* methodName, _TAG_VALUE*
     definition = NewTagValue( "XREF", var->xref->id, definition, 0 );
   if( var->singleton )
     definition = NewTagValue( "SINGLETON", "true", definition, 0 );
+  if( NOTEMPTY( var->legalValues ) )
+    definition = NewTagValue( "LEGAL-VALUES", var->legalValues, definition, 0 );
   if( var->gotDefault )
     {
     switch( var->type )

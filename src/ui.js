@@ -1615,6 +1615,11 @@ function GetVarDefinition( id, varname )
     }
 
   var type = definition["TYPE"];
+  var legal = definition["LEGAL-VALUES"];
+  if( typeof legal != "string" )
+    {
+    legal = "";
+    }
 
   var xref = definition["XREF"];
   if( typeof xref != "string" )
@@ -1685,6 +1690,55 @@ function GetVarDefinition( id, varname )
           selected = " selected";
           }
         html += "  <option value='" + xrefValues[i] + "'" + selected + ">" + xrefValues[i] + "</option>";
+        }
+      html += "</select>";
+
+      if( divAlreadyIncludes )
+        { // already got it
+        // console.log( "HTML already includes our select" );
+        }
+      else
+        { // the html does not already include what we want to push into it.
+        var oldInput = "<input type=.text. id=.value-"+id+"[^/]*>";
+        var oldSelect = "<select.*<\/select>";
+        var oldInputRe = new RegExp( oldInput, "i" );
+        var oldSelectRe = new RegExp( oldSelect, "i" );
+        divContents = divContents.replace( oldInputRe, "" );
+        divContents = divContents.replace( oldSelectRe, "" );
+        divContents += html;
+        divRow.innerHTML = divContents;
+        delete oldInputRe;
+        delete oldSelectRe;
+        }
+      }
+    }
+  else if( type == "string" && "" != legal )
+    {
+    var valuesArray = legal.split("|");
+    if( ! Array.isArray( valuesArray ) )
+      {
+      console.log( "Failed to split " + legal + " into comma-separated array" );
+      }
+    else
+      {
+      var divContents = divRow.innerHTML;
+      var divAlreadyIncludes = divContents.includes( "<select" );
+
+      var html = "";
+      html += "<select id='value-" + id + "' onfocus='GetVarDefinition(\"" + id + "\",\"" + obj.variable + "\")' class='select-value' oninput='MarkEdited(this)' onkeydown='MaybeSaveVariable( event, \"" + id + "\")'/>";
+      var l = valuesArray.length;
+      for( var i=0; i<l; ++i )
+        {
+        if( divAlreadyIncludes && ! divContents.includes( valuesArray[i] ) )
+          {
+          divAlreadyIncludes = false;
+          }
+        var selected = "";
+        if( obj.value == valuesArray[i] )
+          {
+          selected = " selected";
+          }
+        html += "  <option value='" + valuesArray[i] + "'" + selected + ">" + valuesArray[i] + "</option>";
         }
       html += "</select>";
 

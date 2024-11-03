@@ -248,6 +248,14 @@ void ProcessConfigLine( char* ptr, char* equalsChar, _CONFIG* config )
         Error( "Variable %s does not qualify for %s", config->lastVar->id, variable );
       /* handle date min/max? */
       }
+    else if( strcasecmp( variable, "legal" )==0 )
+      {
+      if( config->lastVar==NULL ) Error( "%s must follow VARIABLE", variable );
+      if( config->lastVar->legalValues ) Error( "%s cannot have multiple lists of legal values", config->lastVar->id );
+      if( config->lastVar->type != vt_string ) Error( "%s only applies to variables of type string", variable );
+      if( strchr( value, '|' )==NULL ) Error( "%s legal values (%s) must have at least two values, separated by at least one comma.", variable, value );
+      config->lastVar->legalValues = strdup( value );
+      }
     else if( strcasecmp( variable, "default" )==0 )
       {
       if( config->lastVar==NULL ) Error( "%s must follow VARIABLE", variable );

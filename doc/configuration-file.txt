@@ -167,6 +167,16 @@ Following are the variables that you can specify in confedit's own
 
   e.g., DEFAULT=365
 
+* LEGAL
+
+  A list of permissible values for this variable, separated by the | (vertical pipe)
+  symbol.
+  until one is specified by the user.
+
+  e.g., LEGAL=true|false
+  or
+  e.g., LEGAL=one|two|three|four
+
 * STEP
 
   For integer or floating point type variables, the increment in which it is increased

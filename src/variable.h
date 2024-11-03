@@ -44,6 +44,7 @@ typedef struct _variable
   double defaultFloat;
   double defaultBool;
   char* defaultString;
+  char* legalValues;
 
   char* helpText;
   struct _variable* follows;
