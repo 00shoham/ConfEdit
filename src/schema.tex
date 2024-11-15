@@ -1,5 +1,5 @@
 % MyPath auto-populated:
-\def\MyPath{/ home/ idan/ confedit/ src/ schema.tex}
+\def\MyPath{/home/idan/confedit/src/schema.tex}
 \def\MyTitle{Configuration file syntax}
 \def\MyDate{2024-04-20}
 
@@ -349,13 +349,45 @@ The largest permissible value is 17976931348623157081452742373170435679807056752
 \textbf{PRODUCT\_M\_REVENUE\_AVG:}
 
 
-The average monthly recurring revenue from sales of this product.  Applies only if PRODUCT\_PRICE\_BY\_UNITS is false.
+The average monthly recurring revenue from sales of this product.  Applies only if PRODUCT\_PRICE\_BY\_UNITS is false.  Only use this if not setting PRODUCT\_M\_UNITS\_GROWTH\_AVG and friends.
 
 Set this variable to a value of type 'int.'
 
 The smallest permissible value is 1.
 
 The largest permissible value is 1000000.
+
+The smallest permissible value is 0.0.
+
+The largest permissible value is 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0.
+
+
+\textbf{PRODUCT\_M\_UNITS\_GROWTH\_SDEV:}
+
+
+If the product is sold by units, about how many units can a customer add, monthly?
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 10000.
+
+The smallest permissible value is 0.0.
+
+The largest permissible value is 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0.
+
+
+\textbf{PRODUCT\_M\_UNITS\_GROWTH\_AVG:}
+
+
+If the product is sold by units, about how many units can a customer add, monthly?  Only use this if not setting PRODUCT\_M\_REVENUE\_AVG and friends.
+
+Set this variable to a value of type 'int.'
+
+The smallest permissible value is 1.
+
+The largest permissible value is 10000.
 
 The smallest permissible value is 0.0.
 
